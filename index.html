@@ -278,6 +278,37 @@
         padding: 10px 0px 0px 0px;
         font-size: 14px;
     }
+    /* CSS cho thiết bị có màn hình lớn hơn hoặc bằng 1200px */
+@media (min-width: 1200px) {
+  /* Định dạng cho màn hình lớn */
+  body {
+    font-size: 18px;
+  }
+}
+
+/* CSS cho thiết bị có màn hình từ 992px đến 1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* Định dạng cho màn hình trung bình */
+  body {
+    font-size: 16px;
+  }
+}
+
+/* CSS cho thiết bị có màn hình từ 768px đến 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+  /* Định dạng cho màn hình nhỏ */
+  body {
+    font-size: 14px;
+  }
+}
+
+/* CSS cho thiết bị có màn hình nhỏ hơn hoặc bằng 767px */
+@media (max-width: 767px) {
+  /* Định dạng cho màn hình rất nhỏ */
+  body {
+    font-size: 12px;
+  }
+}
 </style>
 </head>
 <body>
