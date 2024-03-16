@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phim Online</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>    
+<style>
+    @import url('https://use.fontawesome.com/releases/v6.4.2/css/all.css');
+    *{
+        padding: 0;
+        margin: 0;
+    }
+
+    *{
+        box-sizing: border-box;
+    }
+    body{
+        background-image: url(Ảnh\ chụp\ màn\ hình\ \(81\).png);
+        color: #fff;
+
+    }
+    .container{
+        position: relative;
+        width: 90%; /* Thay vì kích thước cố định */
+        max-width: 800px; /* Giới hạn kích thước lớn nhất */
+        height: 480px;
+        background-color: #f5f5f5;
+        box-shadow: 0px 0px 0px 0px #dbdbdb;
+    }
+    .main-box {
+        width: 100%; /* Cố định chiều rộng */
+        padding: 20px; /* Thêm padding */
+    }
+    .slide .item {
+    width: 30%; /* Thay vì kích thước cố định */
+    margin-right: 10px; /* Tạo khoảng cách giữa các item */
+    }
+    .main-box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-left: -100px;
+    }
+    .container .slide .item{
+        width: 165px;
+        height: 250px;
+        position: absolute;
+        top: 50%;
+        transform: translate(0,-50%);
+        border-radius: 20px;
+        box-shadow: 0 30px 50px #505050;
+        background-position:50% 50% ;
+        background-size:cover ;
+        display: inline-block;
+        transition: 0.5s;
+    }
+
+    .slide .item:nth-child(1),
+    .slide .item:nth-child(2){
+        top: 0;
+        left: 0;
+        transform: translate(0,0);
+        border-radius: 0;
+        width: 100%;
+        height: 100%;
+
+    }
+    .slide .item:nth-child(3){
+        left: 50%;
+    }
+
+    .slide .item:nth-child(4) {
+        left: calc(50% + 27%);
+    }
+
+    .slide .item:nth-child(5) {
+        left: calc(50% + 54%);
+    }
+    .slide .item:nth-child(n+6) {
+        left: calc(50% + 82%);
+        opacity: 0;
+    }
+
+    .item .content{
+        position: absolute;
+        top: 50%;
+        left: 100px;
+        width: 300px;
+        text-align: left;
+        color: #eee;
+        transform: translate(0,-50%);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        display:none;
+    }
+
+    .slide .item:nth-child(2) .content{
+        display: block;
+    }
+    .content .name{
+        font-size: 30px;
+        text-transform: uppercase;
+        font-weight: bold;
+        opacity: 0;
+        animation: animate 1s ease-in-out 1 forwards;
+        text-shadow: 5px 5px 5px #292828;
+    }
+
+    .content .des{
+        margin-top: 10px;
+        margin-bottom: 20px;
+        opacity: 0;
+        animation: animate 1s ease-in-out 0.3s 1 forwards;
+        text-shadow: 5px 10px 5px #292828;
+    }
+    .content button{
+        width: 150px;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        opacity: 0;
+        border-radius: 8px;
+        animation: animate 1s ease-in-out 0.6s 1 forwards; 
+    }
+
+    @keyframes animate {
+        from{
+            opacity: 0;
+            transform: translate(0,100px);
+            filter: blur(33px);
+        }
+        to{
+            opacity: 1;
+            transform: translate(0);
+            filter: blur(0);
+        }
+    }
+    .button{
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        bottom: 20px;
+    }
+
+    .button button{
+        width: 40px;
+        height: 35px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        margin: 0 5px;
+        border: 1px solid #000;
+        transition: 0.3s;
+    }
+
+    .button button:hover{
+        background-color: #ababab;
+        color: #000000;
+    }
+
+    header{
+        justify-content: space-between;
+        padding: 10px 30px 10px 30px;
+        background-color: maroon;
+    }
+    nav{
+        text-decoration: none;
+        padding: 10px ;
+    }
+    ul{
+        text-decoration: none;
+        display: flex;
+        justify-content: space-between;
+    }
+    ul>li{
+        list-style: none;
+        font-size: 20px;
+    }
+    ul li:hover{
+        font-size: 22px;
+        background-color: rgb(236, 76, 76);
+        border-radius: 30px;
+    }
+    ul>li>a{
+        text-decoration: none;
+        color: white;
+    }
+    .dropdown-menu{
+        background-color: rgb(236, 76, 76);
+    }
+    
+    .bán{
+        text-align: center;
+        font-size: 40px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .dòng1{
+        display: flex;
+        margin: 0;
+        margin-bottom: 0px;
+        display: block;
+        justify-content: space-between; 
+      
+        box-sizing: border-box;
+    }
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .d-flex{
+        position: relative;
+        left: 0px;
+    }
+    .bán{
+        text-align: center;
+        font-size: 40px;
+        display: block;
+    }
+    main{
+        margin: 3%;
+        padding: 20px;
+        max-width: 950px;
+    }
+    .tieude{
+        text-align: center;
+        font-size: 30px;
+        position: relative;
+        display: block;
+        left: 247.5px;
+    }
+    .dòng1{
+        margin: 3%;
+        position: relative;
+        left: 23px;
+    }
+    button{
+        width: 100px;
+        font-size: large;
+        margin: 5px;
+    }
+    button:hover{
+        background-color: darkorange;
+    }
+    footer{
+        position: relative;
+        color: #ffffff;
+        background-color: maroon;
+        width: 100%;
+        top: 150px;
+        padding: 10px 0px 10px 0px;
+        font-size: 14px;
+    }
+    form{
+        position: relative;
+        left: 545px;
+        display: block;
+        font-size: 18px;    
+    }
+    form input{
+        padding: 2px 2px 2px 5px;
+        display: block;
+        font-size: 18px;
+    }
+    .dòngg{
+        display: flex;
+        padding: 0px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        text-align: center;
+        box-sizing: border-box;
+
+    }
+
+    main{
+        margin: 3%;
+        padding: 20px;
+        position: relative;
+        top: 50px;
+    }
+   
+    button{
+        width: 100px;
+        font-size: large;
+        list-style: none;
+        text-decoration: none;
+        position: relative;
+        right: 4px;
+    }
+    button a{
+        list-style: none;
+        text-decoration: none;
+        color: #000;
+    }
+    button:hover{
+        background-color: rgb(194, 189, 182);
+        text-decoration: none;
+        list-style: none;
+    }
+    button a:hover{
+        background-color: rgb(194, 189, 182);
+        text-decoration: none;
+        list-style: none;
+        color: #000;
+
+    }
+    footer{
+        color: #ffffff;
+        background-color: maroon;
+        width: 100%;
+        padding: 10px 0px 0px 0px;
+        font-size: 14px;
+        position: relative;
+        top: 212px;
+    }
+
+    /* CSS cho thiết bị có màn hình lớn hơn hoặc bằng 1600px */
+    @media (max-width: 1600px) {
+    /* Định dạng cho màn hình lớn */
+        body {
+            font-size: 18px;
+        }
+    }
+
+    /* CSS cho thiết bị có màn hình từ 992px đến 1199px */
+    @media (min-width: 992px) and (max-width: 1199px) {
+    /* Định dạng cho màn hình trung bình */
+        body {
+            font-size: 16px;
+        }
+    }
+
+    /* CSS cho thiết bị có màn hình từ 768px đến 991px */
+    @media (min-width: 768px) and (max-width: 991px) {
+    /* Định dạng cho màn hình nhỏ */
+        body {
+            font-size: 14px;
+        }
+    }
+
+    /* CSS cho thiết bị có màn hình nhỏ hơn hoặc bằng 767px */
+    @media (max-width: 767px) {
+    /* Định dạng cho màn hình rất nhỏ */
+        body {
+            font-size: 12px;
+        }
+    }
+</style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">PHIM MOI</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Trang chủ</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Phim Hot</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#phim-moi">Phim Mới</a></li>    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Thể loại</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Phim trung quốc</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Anime nhật bản</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Phim chiếu rạp</a></li>
+                            </ul>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Tìm kiếm phim" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                </div>
+            </div>
+            </nav>
+        <!-- <h1 class="bán">PHIM ONLINE</h1> -->
+    </header>
+    <main>
+
+        <h1 class="tieude">Đăng Kí/Đăng Nhập</h1>
+        <section class="dòng1">
+            <form>
+                Tên Đăng Nhập: <input type="username" name="username" id="username"><br>
+                Mật Khẩu: <input type="password" name="password" id="password"><br>
+                <button id="register-button"><a href="index.html">Đăng Kí</a></button>
+                <button id="login-button"><a href="index.html">Đăng Nhập</a></button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <table width="100%">
+            <tr>
+                <td align="center" color="white">
+                    <p>Copyright © 2024 | nhuongg.vn</p>
+                </td>
+            </tr>
+          </table>
+    </footer>
+</body>
+</html>
+<script type="text/javascript">
+    // Đợi 2 giây trước khi thêm sự kiện click
+    setInterval(() => {
+        const items = document.querySelectorAll('.item');
+        document.querySelector('.slide').appendChild(items[0]);
+    }, 3000); // 2000 milliseconds = 2 seconds
+
+    // click để chạy chuyển slide
+    const $next = document.querySelector('.next');
+    const $prev = document.querySelector('.prev');
+
+    $next.addEventListener('click', () => {
+        const items = document.querySelectorAll('.item');
+        document.querySelector('.slide').appendChild(items[0]);
+    })  
+
+    $prev.addEventListener('click', () => {
+        const items = document.querySelectorAll('.item');
+        document.querySelector('.slide').prepend(items[items.length-1]);
+    })
+
+    // cuộn đến chữ Phim Hot
+    document.addEventListener('DOMContentLoaded', function() {
+        const phimHotLink = document.querySelector('.nav-link[href="#"]');
+        const phimHotSection = document.getElementById('phim-hot');
+
+        phimHotLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
+            phimHotSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    // cuộn đến chữ Phim Mới
+    document.addEventListener('DOMContentLoaded', function() {
+        const phimHotLink = document.querySelector('.nav-link[href="#phim-hot"]');
+        const phimMoiLink = document.querySelector('.nav-link[href="#phim-moi"]');
+        const phimMoiSection = document.getElementById('phim-moi');
+
+        phimHotLink.addEventListener('click', scrollToSection);
+        phimMoiLink.addEventListener('click', scrollToSection);
+
+        function scrollToSection(event) {
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
+
+            // Lấy phần tử mục tiêu dựa trên href của liên kết
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            // Tính toán khoảng cách cần cuộn để targetSection ở giữa trang
+            const windowHeight = window.innerHeight;
+            const sectionHeight = targetSection.offsetHeight;
+            const offsetTop = targetSection.offsetTop;
+            const scrollDistance = offsetTop - (windowHeight - sectionHeight) / 2;
+
+            window.scrollTo({
+                top: scrollDistance,
+                behavior: 'smooth'
+            });
+        }
+    });
+    // Hàm xử lý khi người dùng nhấp vào nút đăng kí
+function handleRegister() {
+    // Thực hiện xử lý đăng kí ở đây
+
+    // Sau khi xử lý, chuyển hướng người dùng đến trang index.html
+    window.location.href = 'index.html';
+}
+
+<!-- Đoạn mã trong hàm handleLogin -->
+function handleLogin() {
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    // Truyền thông tin đăng nhập qua URL khi chuyển hướng
+    window.location.href = 'index.html?username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password);
+}
+
+// Lắng nghe sự kiện click trên nút Đăng Kí và gọi hàm xử lý tương ứng
+const registerButton = document.querySelector('#register-button');
+registerButton.addEventListener('click', handleRegister);
+
+// Lắng nghe sự kiện click trên nút Đăng Nhập và gọi hàm xử lý tương ứng
+const loginButton = document.querySelector('#login-button');
+loginButton.addEventListener('click', handleLogin);
+
+</script>
